@@ -49,7 +49,59 @@
     <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-firestore.js"></script>
     <script>
      var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+     var countDownDate = new Date("dec 30, 2022 12:10:00").getTime();
 
+// Update the count down every 1 second
+var x = setInterval(function () {
+  // Get today's date and time
+  var now = new Date().getTime();
+
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor(
+    (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+  );
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  // Output the result in an element with id="demo"
+  document.getElementById("demo").innerHTML =
+    days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+  // If the count down is over, write some text
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "EXPIRED";
+  }
+}, 1000);
+
+async function writeData() {
+  const time = new Date().toLocaleDateString("en-us", {
+    weekday: "long",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    time: "numeric",
+  });
+  const data = {
+    name: await document.getElementById("fname").value,
+    Comment: await document.getElementById("Comments").value,
+    time: time,
+  };
+  db.collection("wedanu")
+    .add(data)
+    .then((db) => {
+      console.log("Document successfully written!");
+      getMarker();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  console.log(data, "dataa");
+}
       var config = {
         apiKey: "AIzaSyD-JyACPSTYYNvwX1kkoYCJ34t2OMbOEtQ",
         authDomain: "wedanu.firebaseapp.com",
@@ -136,59 +188,7 @@
       getMarker();
 
       // Set the date we're counting down to
-      var countDownDate = new Date("dec 30, 2022 12:10:00").getTime();
-
-      // Update the count down every 1 second
-      var x = setInterval(function () {
-        // Get today's date and time
-        var now = new Date().getTime();
-
-        // Find the distance between now and the count down date
-        var distance = countDownDate - now;
-
-        // Time calculations for days, hours, minutes and seconds
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor(
-          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-        );
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        // Output the result in an element with id="demo"
-        document.getElementById("demo").innerHTML =
-          days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-
-        // If the count down is over, write some text
-        if (distance < 0) {
-          clearInterval(x);
-          document.getElementById("demo").innerHTML = "EXPIRED";
-        }
-      }, 1000);
-
-      async function writeData() {
-        const time = new Date().toLocaleDateString("en-us", {
-          weekday: "long",
-          year: "numeric",
-          month: "short",
-          day: "numeric",
-          time: "numeric",
-        });
-        const data = {
-          name: await document.getElementById("fname").value,
-          Comment: await document.getElementById("Comments").value,
-          time: time,
-        };
-        db.collection("wedanu")
-          .add(data)
-          .then((db) => {
-            console.log("Document successfully written!");
-            getMarker();
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-        console.log(data, "dataa");
-      }
+      
 
 
          // **************************style*************************************
