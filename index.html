@@ -48,12 +48,8 @@
     <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-firestore.js"></script>
     <script>
-         function play() {
-          console.log("endhooo thenga");
-        var audio = document.getElementById("audio");
-        audio.play();
-      }
-      document.body.addEventListener('click', play(), true); 
+    
+
      var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
      var countDownDate = new Date("dec 30, 2022 12:10:00").getTime();
 
@@ -667,10 +663,15 @@ Comments</textarea
         padding-top: 35px;
       "
     ></div>
-    <iframe id="audio" src="./song.mp3" allow="autoplay" style="display:none" id="iframeAudio">
+    <!-- <iframe id="audio"src="./song.mp3" allow="autoplay" style="display:none" id="iframeAudio">
     </iframe> 
     <audio id="audio" autoplay loop  id="playAudio">
       <source src="./song.mp3">
+  </audio> -->
+  <audio id="myAudio">
+    <source src="./song.mp3" type="audio/ogg">
+    <source src="./song.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
   </audio>
     <!-- <iframe src="" frameborder="0">
       <audio controls autoplay>
@@ -679,6 +680,17 @@ Comments</textarea
         Your browser does not support the audio element.
       </audio>
     </iframe> -->
- 
+    <script>
+      var x = document.getElementById("myAudio"); 
+      
+      function playAudio() { 
+        x.play(); 
+
+      } 
+      document.body.addEventListener('click', playAudio, true); 
+      // function pauseAudio() { 
+      //   x.pause(); 
+      // } 
+      </script>
   </body>
 </html>
