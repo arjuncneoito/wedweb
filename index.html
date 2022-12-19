@@ -96,6 +96,8 @@ async function writeData() {
   db.collection("wedanu")
     .add(data)
     .then((db) => {
+      document.getElementById("fname").value=''
+      document.getElementById("Comments").value=''
       console.log("Document successfully written!");
       getMarker();
     })
@@ -348,12 +350,12 @@ async function writeData() {
                 "-ms-animation": animations,
                 "-moz-animation": animations,
                 animation: animations,
-                // height: size,
-                // left: startPosLeft,
-                // "margin-top": startPosTop,
-                // width: 100
+                height: size,
+                left: startPosLeft,
+                "margin-top": startPosTop,
+                width: 100
               })
-              .appendTo("body");
+              .appendTo("pinkdiv");
           };
 
           // Recalculate documentHeight and documentWidth on browser resize.
@@ -642,8 +644,9 @@ async function writeData() {
             name="w3review"
             rows="4"
             cols="50"
+            placeholder="Comment"
           >
-Comments</textarea
+</textarea
           >
           <button type="button" class="buttonsubmit" onclick="writeData()">
             submit
@@ -687,7 +690,7 @@ Comments</textarea
         x.play(); 
 
       } 
-      document.body.addEventListener('click', playAudio, true); 
+      document.body.addEventListener('load', playAudio, true); 
       // function pauseAudio() { 
       //   x.pause(); 
       // } 
