@@ -4,7 +4,8 @@
   box-sizing: border-box;
 }
 .pinkDiv {
-  background-color: #ffc0cb8f;
+  background: transparent;
+  /* background-color: #ffc0cb8f; */
   position: relative;
   display: flex;
   z-index: 1;
@@ -17,7 +18,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-top: 34%;
+  margin-top: 73%;
 
   padding-top: 34px;
 }
