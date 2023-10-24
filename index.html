@@ -1,34 +1,32 @@
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./main.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montaga&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <script type="text/javascript"><!--
-      google_ad_client = "ca-pub-2783044520727903";
-      /* jQuery_demo */
-      google_ad_slot = "2780937993";
-      google_ad_width = 728;
-      google_ad_height = 90;
-      //-->
-      </script>
 
-      </script></div></p>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <title>Document</title>
-  </head>
-  <body >
-    <!-- <script type="module">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./main.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montaga&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <script type="text/javascript"><!--
+google_ad_client = "ca-pub-2783044520727903";
+/* jQuery_demo */
+    google_ad_slot = "2780937993";
+    google_ad_width = 728;
+    google_ad_height = 90;
+    //-->
+  </script>
+
+  </script>
+  </div>
+  </p>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- <script type="module">
       // Import the functions you need from the SDKs you need
       import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
       import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
@@ -44,98 +42,98 @@
       const analytics = getAnalytics(app);
     </script> -->
 
-    <!-- scripts -->
-    <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-firestore.js"></script>
-    <script>
-    
+  <!-- scripts -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-firestore.js"></script>
+  <script>
 
-     var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
-     var countDownDate = new Date("dec 30, 2022 12:10:00").getTime();
 
-// Update the count down every 1 second
-var x = setInterval(function () {
-  // Get today's date and time
-  var now = new Date().getTime();
+    var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+    var countDownDate = new Date("dec 30, 2022 12:10:00").getTime();
 
-  // Find the distance between now and the count down date
-  var distance = countDownDate - now;
+    // Update the count down every 1 second
+    var x = setInterval(function () {
+      // Get today's date and time
+      var now = new Date().getTime();
 
-  // Time calculations for days, hours, minutes and seconds
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor(
-    (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-  );
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      // Find the distance between now and the count down date
+      var distance = countDownDate - now;
 
-  // Output the result in an element with id="demo"
-  document.getElementById("demo").innerHTML =
-    days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+      // Time calculations for days, hours, minutes and seconds
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor(
+        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  // If the count down is over, write some text
-  if (distance < 0) {
-    clearInterval(x);
-    document.getElementById("demo").innerHTML = "EXPIRED";
-  }
-}, 1000);
+      // Output the result in an element with id="demo"
+      document.getElementById("demo").innerHTML =
+        days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
 
-async function writeData() {
-  const time = new Date().toLocaleDateString("en-us", {
-    weekday: "long",
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-    time: "numeric",
-  });
-  const data = {
-    name: await document.getElementById("fname").value,
-    Comment: await document.getElementById("Comments").value,
-    time: time,
-  };
-  db.collection("wedanu")
-    .add(data)
-    .then((db) => {
-      document.getElementById("fname").value=''
-      document.getElementById("Comments").value=''
-      console.log("Document successfully written!");
-      getMarker();
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-  console.log(data, "dataa");
-}
-      var config = {
-        apiKey: "AIzaSyD-JyACPSTYYNvwX1kkoYCJ34t2OMbOEtQ",
-        authDomain: "wedanu.firebaseapp.com",
-        projectId: "wedanu",
-        storageBucket: "wedanu.appspot.com",
-        messagingSenderId: "1069609094594",
-        appId: "1:1069609094594:web:85f7bbe9cf78197c6cda5b",
-        measurementId: "G-T09ZGGTQWC",
+      // If the count down is over, write some text
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("demo").innerHTML = "EXPIRED";
+      }
+    }, 1000);
+
+    async function writeData() {
+      const time = new Date().toLocaleDateString("en-us", {
+        weekday: "long",
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+        time: "numeric",
+      });
+      const data = {
+        name: await document.getElementById("fname").value,
+        Comment: await document.getElementById("Comments").value,
+        time: time,
       };
-      // if (!firebase.apps.length) {
-      firebase.initializeApp(config);
-      // } else {
-      firebase.app();
-      // }
-      var db = firebase.firestore();
-      db.settings({ timestampsInSnapshots: true });
-      const getMarker = async () => {
-        const snapshot = await firebase.firestore().collection("wedanu").get();
-        var chakka = snapshot.docs.map((doc) => doc.data());
-        let name = "";
-        let commentss = "";
+      db.collection("wedanu")
+        .add(data)
+        .then((db) => {
+          document.getElementById("fname").value = ''
+          document.getElementById("Comments").value = ''
+          console.log("Document successfully written!");
+          getMarker();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      console.log(data, "dataa");
+    }
+    var config = {
+      apiKey: "AIzaSyD-JyACPSTYYNvwX1kkoYCJ34t2OMbOEtQ",
+      authDomain: "wedanu.firebaseapp.com",
+      projectId: "wedanu",
+      storageBucket: "wedanu.appspot.com",
+      messagingSenderId: "1069609094594",
+      appId: "1:1069609094594:web:85f7bbe9cf78197c6cda5b",
+      measurementId: "G-T09ZGGTQWC",
+    };
+    // if (!firebase.apps.length) {
+    firebase.initializeApp(config);
+    // } else {
+    firebase.app();
+    // }
+    var db = firebase.firestore();
+    db.settings({ timestampsInSnapshots: true });
+    const getMarker = async () => {
+      const snapshot = await firebase.firestore().collection("wedanu").get();
+      var chakka = snapshot.docs.map((doc) => doc.data());
+      let name = "";
+      let commentss = "";
 
-        chakka.forEach(myFunction);
-        function myFunction(item, index) {
-          console.log(item, index);
+      chakka.forEach(myFunction);
+      function myFunction(item, index) {
+        console.log(item, index);
 
-          name += item.name + "<br>";
-          commentss +=
-            "<div>" +
-            `<text
+        name += item.name + "<br>";
+        commentss +=
+          "<div>" +
+          `<text
       style="
         font-family: 'Noto Serif JP';
         font-style: normal;
@@ -145,10 +143,10 @@ async function writeData() {
         line-height: 160%;
       "
       >` +
-            item.name +
-            `</text
+          item.name +
+          `</text
     >` +
-            `<text
+          `<text
       style="
         margin-left: 9px;
         font-family: 'Noto Serif JP';
@@ -161,12 +159,12 @@ async function writeData() {
         color: #aaa7a5;
       "
       >` +
-            item.time +
-            `</text
+          item.time +
+          `</text
     >` +
-            `
+          `
   </div>` +
-            `<p
+          `<p
     style="
       word-wrap: break-word;
       padding-right: 25px;
@@ -179,228 +177,311 @@ async function writeData() {
       color: #4b4542;
     "
   >` +
-            item.Comment +
-            `</p>`;
+          item.Comment +
+          `</p>`;
+      }
+      // document.getElementById("name").innerHTML = name;
+      document.getElementById("olakkaaa").innerHTML = commentss;
+
+      // text += index + ": " + item + "<br>";
+    };
+
+    // console.log(chakka);
+    getMarker();
+
+    // Set the date we're counting down to
+
+
+
+    // **************************style*************************************
+    (function ($) {
+      // requestAnimationFrame Polyfill
+      (function () {
+        var lastTime = 0;
+        var vendors = ["ms", "moz", "webkit", "o"];
+
+        for (
+          var x = 0;
+          x < vendors.length && !window.requestAnimationFrame;
+          ++x
+        ) {
+          window.requestAnimationFrame =
+            window[vendors[x] + "RequestAnimationFrame"];
+          window.cancelAnimationFrame =
+            window[vendors[x] + "CancelAnimationFrame"] ||
+            window[vendors[x] + "CancelRequestAnimationFrame"];
         }
-        // document.getElementById("name").innerHTML = name;
-        document.getElementById("olakkaaa").innerHTML = commentss;
 
-        // text += index + ": " + item + "<br>";
-      };
+        if (!window.requestAnimationFrame)
+          window.requestAnimationFrame = function (callback, element) {
+            var currTime = new Date().getTime();
+            var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+            var id = window.setTimeout(function () {
+              callback(currTime + timeToCall);
+            }, timeToCall);
+            lastTime = currTime + timeToCall;
 
-      // console.log(chakka);
-      getMarker();
+            return id;
+          };
 
-      // Set the date we're counting down to
-      
+        if (!window.cancelAnimationFrame)
+          window.cancelAnimationFrame = function (id) {
+            clearTimeout(id);
+          };
+      })();
 
+      // Sakura function.
+      $.fn.sakura = function (options) {
+        // We rely on these random values a lot, so define a helper function for it.
+        function getRandomInt(min, max) {
+          return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
 
-         // **************************style*************************************
-         (function ($) {
-        // requestAnimationFrame Polyfill
-        (function () {
-          var lastTime = 0;
-          var vendors = ["ms", "moz", "webkit", "o"];
+        // Helper function to attach cross-browser events to an element.
+        var prefixes = ["moz", "ms", "o", "webkit", ""];
+        var prefCount = prefixes.length;
 
-          for (
-            var x = 0;
-            x < vendors.length && !window.requestAnimationFrame;
-            ++x
-          ) {
-            window.requestAnimationFrame =
-              window[vendors[x] + "RequestAnimationFrame"];
-            window.cancelAnimationFrame =
-              window[vendors[x] + "CancelAnimationFrame"] ||
-              window[vendors[x] + "CancelRequestAnimationFrame"];
-          }
-
-          if (!window.requestAnimationFrame)
-            window.requestAnimationFrame = function (callback, element) {
-              var currTime = new Date().getTime();
-              var timeToCall = Math.max(0, 16 - (currTime - lastTime));
-              var id = window.setTimeout(function () {
-                callback(currTime + timeToCall);
-              }, timeToCall);
-              lastTime = currTime + timeToCall;
-
-              return id;
-            };
-
-          if (!window.cancelAnimationFrame)
-            window.cancelAnimationFrame = function (id) {
-              clearTimeout(id);
-            };
-        })();
-
-        // Sakura function.
-        $.fn.sakura = function (options) {
-          // We rely on these random values a lot, so define a helper function for it.
-          function getRandomInt(min, max) {
-            return Math.floor(Math.random() * (max - min + 1)) + min;
-          }
-
-          // Helper function to attach cross-browser events to an element.
-          var prefixes = ["moz", "ms", "o", "webkit", ""];
-          var prefCount = prefixes.length;
-
-          function prefixedEvent(element, type, callback) {
-            for (var i = 0; i < prefCount; i++) {
-              if (!prefixes[i]) {
-                type = type.toLowerCase();
-              }
-
-              element
-                .get(0)
-                .addEventListener(prefixes[i] + type, callback, false);
+        function prefixedEvent(element, type, callback) {
+          for (var i = 0; i < prefCount; i++) {
+            if (!prefixes[i]) {
+              type = type.toLowerCase();
             }
-          }
 
-          // Defaults for the option object, which gets extended below.
-          var defaults = {
-            blowAnimations: [
-              "blow-soft-left",
-              "blow-medium-left",
-              "blow-hard-left",
-              "blow-soft-right",
-              "blow-medium-right",
-              "blow-hard-right",
-            ],
+            element
+              .get(0)
+              .addEventListener(prefixes[i] + type, callback, false);
+          }
+        }
+
+        // Defaults for the option object, which gets extended below.
+        var defaults = {
+          blowAnimations: [
+            "blow-soft-left",
+            "blow-medium-left",
+            "blow-hard-left",
+            "blow-soft-right",
+            "blow-medium-right",
+            "blow-hard-right",
+          ],
+          className: "sakura",
+          fallSpeed: 1,
+          maxSize: 14,
+          minSize: 9,
+          newOn: 300,
+          swayAnimations: [
+            "sway-0",
+            "sway-1",
+            "sway-2",
+            "sway-3",
+            "sway-4",
+            "sway-5",
+            "sway-6",
+            "sway-7",
+            "sway-8",
+          ],
+        };
+
+        var options = $.extend({}, defaults, options);
+
+        // Declarations.
+        // var documentHeight = $(document).height();
+        // var documentWidth = $(document).width();
+        // var sakura = $('<div class="' + options.className + '" />');
+
+        // Set the overflow-x CSS property on the body to prevent horizontal scrollbars.
+        // $("body").css({ "overflow-x": "hidden" });
+
+        // Function that inserts new petals into the document.
+        var petalCreator = function () {
+          setTimeout(function () {
+            requestAnimationFrame(petalCreator);
+          }, options.newOn);
+
+          // Get one random animation of each type and randomize fall time of the petals.
+          // var blowAnimation =
+          //   options.blowAnimations[
+          //     Math.floor(Math.random() * options.blowAnimations.length)
+          //   ];
+          // var swayAnimation =
+          //   options.swayAnimations[
+          //     Math.floor(Math.random() * options.swayAnimations.length)
+          //   ];
+          // var fallTime =
+          //   (Math.round(documentHeight * 0.007) + Math.random() * 5) *
+          //   options.fallSpeed;
+
+          var animations =
+            "fall " +
+            fallTime +
+            "s linear 0s 1" +
+            ", " +
+            blowAnimation +
+            " " +
+            ((fallTime > 30 ? fallTime : 30) - 20 + getRandomInt(0, 20)) +
+            "s linear 0s infinite" +
+            ", " +
+            swayAnimation +
+            " " +
+            getRandomInt(2, 4) +
+            "s linear 0s infinite";
+          var petal = sakura.clone();
+          var size = getRandomInt(options.minSize, options.maxSize);
+          var startPosLeft = Math.random() * documentWidth - 100;
+          var startPosTop = -(Math.random() * 20 + 15);
+
+          // Apply Event Listener to remove petals that reach the bottom of the page.
+          prefixedEvent(petal, "AnimationEnd", function () {
+            $(this).remove();
+          });
+
+          // Apply Event Listener to remove petals that finish their horizontal float animation.
+          prefixedEvent(petal, "AnimationIteration", function (ev) {
+            if ($.inArray(ev.animationName, options.blowAnimations) != -1) {
+              $(this).remove();
+            }
+          });
+
+          petal
+            .css({
+              "-webkit-animation": animations,
+              "-o-animation": animations,
+              "-ms-animation": animations,
+              "-moz-animation": animations,
+              animation: animations,
+              height: size,
+              left: startPosLeft,
+              "margin-top": startPosTop,
+              width: 100
+            })
+            .appendTo("pinkdiv");
+        };
+
+        // Recalculate documentHeight and documentWidth on browser resize.
+        $(window).resize(function () {
+          documentHeight = $(document).height();
+          documentWidth = $(document).width();
+        });
+
+        // Finally: Start adding petals.
+        requestAnimationFrame(petalCreator);
+      };
+    })(jQuery);
+    !function (n) {
+      !function () {
+        for (var n = 0, i = ["ms", "moz", "webkit", "o"], a = 0; a < i.length && !window.requestAnimationFrame; ++a) {
+          window.requestAnimationFrame = window[i[a] + "RequestAnimationFrame"];
+          window.cancelAnimationFrame = window[i[a] + "CancelAnimationFrame"] || window[i[a] + "CancelRequestAnimationFrame"];
+        }
+        window.requestAnimationFrame || (window.requestAnimationFrame = function (i) {
+          var a = (new Date).getTime(),
+            t = Math.max(0, 16 - (a - n)),
+            o = window.setTimeout(function () {
+              i(a + t)
+            }, t);
+          return n = a + t, o
+        });
+        window.cancelAnimationFrame || (window.cancelAnimationFrame = function (n) {
+          clearTimeout(n)
+        });
+      }();
+
+      n.fn.sakura = function (i) {
+        function a(n, i) {
+          return Math.floor(Math.random() * (i - n + 1)) + n
+        }
+
+        function t(n, i, a) {
+          for (var t = 0; e > t; t++) o[t] || (i = i.toLowerCase()), n.get(0).addEventListener(o[t] + i, a, !1)
+        }
+
+        var o = ["moz", "ms", "o", "webkit", ""],
+          e = o.length,
+          m = {
+            blowAnimations: ["blow-soft-left", "blow-medium-left", "blow-hard-left", "blow-soft-right", "blow-medium-right", "blow-hard-right"],
             className: "sakura",
             fallSpeed: 1,
             maxSize: 14,
             minSize: 9,
             newOn: 300,
-            swayAnimations: [
-              "sway-0",
-              "sway-1",
-              "sway-2",
-              "sway-3",
-              "sway-4",
-              "sway-5",
-              "sway-6",
-              "sway-7",
-              "sway-8",
-            ],
-          };
+            swayAnimations: ["sway-0", "sway-1", "sway-2", "sway-3", "sway-4", "sway-5", "sway-6", "sway-7", "sway-8"]
+          },
+          i = n.extend({}, m, i),
+          r = n(document).height(),
+          s = n(document).width(),
+          w = n('<div class="' + i.className + '" />');
 
-          var options = $.extend({}, defaults, options);
+        n("html, body").css({ "overflow-x": "hidden" });
 
-          // Declarations.
-          // var documentHeight = $(document).height();
-          // var documentWidth = $(document).width();
-          // var sakura = $('<div class="' + options.className + '" />');
+        var d = function () {
+          setTimeout(function () {
+            requestAnimationFrame(d)
+          }, i.newOn);
 
-          // Set the overflow-x CSS property on the body to prevent horizontal scrollbars.
-          // $("body").css({ "overflow-x": "hidden" });
+          var o = i.blowAnimations[Math.floor(Math.random() * i.blowAnimations.length)],
+            e = i.swayAnimations[Math.floor(Math.random() * i.swayAnimations.length)],
+            m = (Math.round(.007 * r) + 5 * Math.random()) * i.fallSpeed,
+            l = "fall " + m + "s linear 0s 1, " + o + " " + ((m > 30 ? m : 30) - 20 + a(0, 20)) + "s linear 0s infinite, " + e + " " + a(2, 4) + "s linear 0s infinite",
+            u = w.clone(),
+            c = a(i.minSize, i.maxSize),
+            h = Math.random() * (s - c - 10), // Adding a buffer of 10 pixels
+            f = -(20 * Math.random() + 15);
 
-          // Function that inserts new petals into the document.
-          var petalCreator = function () {
-            setTimeout(function () {
-              requestAnimationFrame(petalCreator);
-            }, options.newOn);
-
-            // Get one random animation of each type and randomize fall time of the petals.
-            // var blowAnimation =
-            //   options.blowAnimations[
-            //     Math.floor(Math.random() * options.blowAnimations.length)
-            //   ];
-            // var swayAnimation =
-            //   options.swayAnimations[
-            //     Math.floor(Math.random() * options.swayAnimations.length)
-            //   ];
-            // var fallTime =
-            //   (Math.round(documentHeight * 0.007) + Math.random() * 5) *
-            //   options.fallSpeed;
-
-            var animations =
-              "fall " +
-              fallTime +
-              "s linear 0s 1" +
-              ", " +
-              blowAnimation +
-              " " +
-              ((fallTime > 30 ? fallTime : 30) - 20 + getRandomInt(0, 20)) +
-              "s linear 0s infinite" +
-              ", " +
-              swayAnimation +
-              " " +
-              getRandomInt(2, 4) +
-              "s linear 0s infinite";
-            var petal = sakura.clone();
-            var size = getRandomInt(options.minSize, options.maxSize);
-            var startPosLeft = Math.random() * documentWidth - 100;
-            var startPosTop = -(Math.random() * 20 + 15);
-
-            // Apply Event Listener to remove petals that reach the bottom of the page.
-            prefixedEvent(petal, "AnimationEnd", function () {
-              $(this).remove();
-            });
-
-            // Apply Event Listener to remove petals that finish their horizontal float animation.
-            prefixedEvent(petal, "AnimationIteration", function (ev) {
-              if ($.inArray(ev.animationName, options.blowAnimations) != -1) {
-                $(this).remove();
-              }
-            });
-
-            petal
-              .css({
-                "-webkit-animation": animations,
-                "-o-animation": animations,
-                "-ms-animation": animations,
-                "-moz-animation": animations,
-                animation: animations,
-                height: size,
-                left: startPosLeft,
-                "margin-top": startPosTop,
-                width: 100
-              })
-              .appendTo("pinkdiv");
-          };
-
-          // Recalculate documentHeight and documentWidth on browser resize.
-          $(window).resize(function () {
-            documentHeight = $(document).height();
-            documentWidth = $(document).width();
+          t(u, "AnimationEnd", function () {
+            n(this).remove()
           });
 
-          // Finally: Start adding petals.
-          requestAnimationFrame(petalCreator);
+          t(u, "AnimationIteration", function (a) {
+            var leftPos = parseFloat(n(this).css('left'));
+            if (leftPos > s || leftPos + c > s) {
+              n(this).remove();
+            } else if (-1 != n.inArray(a.animationName, i.blowAnimations)) {
+              n(this).remove();
+            }
+          });
+
+          u.css({
+            "-webkit-animation": l,
+            "-o-animation": l,
+            "-ms-animation": l,
+            "-moz-animation": l,
+            animation: l,
+            height: c,
+            left: h,
+            "margin-top": f,
+            width: c,
+            position: 'fixed' // Set position to fixed
+          }).appendTo("body");
         };
-      })(jQuery);
 
-      !function(n){!function(){for(var n=0,i=["ms","moz","webkit","o"],a=0;a<i.length&&!window.requestAnimationFrame;++a)window.requestAnimationFrame=window[i[a]+"RequestAnimationFrame"],window.cancelAnimationFrame=window[i[a]+"CancelAnimationFrame"]||window[i[a]+"CancelRequestAnimationFrame"];window.requestAnimationFrame||(window.requestAnimationFrame=function(i){var a=(new Date).getTime(),t=Math.max(0,16-(a-n)),o=window.setTimeout(function(){i(a+t)},t);return n=a+t,o}),window.cancelAnimationFrame||(window.cancelAnimationFrame=function(n){clearTimeout(n)})}(),n.fn.sakura=function(i){function a(n,i){return Math.floor(Math.random()*(i-n+1))+n}function t(n,i,a){for(var t=0;e>t;t++)o[t]||(i=i.toLowerCase()),n.get(0).addEventListener(o[t]+i,a,!1)}var o=["moz","ms","o","webkit",""],e=o.length,m={blowAnimations:["blow-soft-left","blow-medium-left","blow-hard-left","blow-soft-right","blow-medium-right","blow-hard-right"],className:"sakura",fallSpeed:1,maxSize:14,minSize:9,newOn:300,swayAnimations:["sway-0","sway-1","sway-2","sway-3","sway-4","sway-5","sway-6","sway-7","sway-8"]},i=n.extend({},m,i),r=n(document).height(),s=n(document).width(),w=n('<div class="'+i.className+'" />');n("body").css({"overflow-x":"hidden",'position': 'absolute'});var d=function(){setTimeout(function(){requestAnimationFrame(d)},i.newOn);var o=i.blowAnimations[Math.floor(Math.random()*i.blowAnimations.length)],e=i.swayAnimations[Math.floor(Math.random()*i.swayAnimations.length)],m=(Math.round(.007*r)+5*Math.random())*i.fallSpeed,l="fall "+m+"s linear 0s 1, "+o+" "+((m>30?m:30)-20+a(0,20))+"s linear 0s infinite, "+e+" "+a(2,4)+"s linear 0s infinite",u=w.clone(),c=a(i.minSize,i.maxSize),h=Math.random()*s-100,f=-(20*Math.random()+15);t(u,"AnimationEnd",function(){n(this).remove()}),t(u,"AnimationIteration",function(a){-1!=n.inArray(a.animationName,i.blowAnimations)&&n(this).remove()}),u.css({"-webkit-animation":l,"-o-animation":l,"-ms-animation":l,"-moz-animation":l,animation:l,height:c,left:h,"margin-top":f,width:c}).appendTo("body")};n(window).resize(function(){r=n(document).height(),s=n(document).width()}),requestAnimationFrame(d)}}(jQuery);
-      $(window).load(function () {
-    $('#pinkdiv').sakura();
-});
-      // **************************style*************************************
+        n(window).resize(function () {
+          r = n(document).height();
+          s = n(document).width();
+        });
+
+        requestAnimationFrame(d);
+      }
+    }(jQuery);
+
+    $(window).load(function () {
+      $('#pinkdiv').sakura();
+    });
+    // **************************style*************************************
 
 
-    </script>
-    <!-- scripts -->
+  </script>
+  <!-- scripts -->
 
-    <div id="pinkdiv" class="pinkDiv">
-      <img
-        style="width: 100%; position: relative"
-        src="./plant.png"
-        alt=""
-      />
-      <div
-        style="
+  <div id="pinkdiv" class="pinkDiv">
+    <img style="width: 100%; position: relative" src="./plant.png" alt="" />
+    <div style="
           position: absolute;
           width: 100%;
           padding-left: 5%;
           padding-right: 5%;
-        "
-      >
-        <img
-          style="width: 100%; margin-top: 56%"
-          src="./plantstand.png"
-          alt=""
-        />
-      </div>
-      <div
-        style="
+        ">
+      <img style="width: 100%; margin-top: 56%" src="./plantstand.png" alt="" />
+    </div>
+    <div style="
           position: absolute;
           width: 100%;
           padding-left: 10%;
@@ -408,18 +489,12 @@ async function writeData() {
           display: flex;
           justify-content: center;
           align-items: center;
-        "
-      >
-        <img
-          style="width: 58%; margin-top: 45% ;background: transparent;"
-          src="./wedani.gif"
-          alt=""
-        />
-      </div>
+        ">
+      <img style="width: 58%; margin-top: 45% ;background: transparent;" src="./wedani.gif" alt="" />
     </div>
-    <div class="couterAndTextConatiner">
-      <Text
-        style="
+  </div>
+  <div class="couterAndTextConatiner">
+    <Text style="
           color: #ffc0cb;
           font-family: 'Montaga', serif;
           font-style: normal;
@@ -427,37 +502,26 @@ async function writeData() {
           font-size: 36px;
           text-align: center;
           line-height: 100%;
-        "
-        >Abhilash & Ayana</Text
-      >
-      <div
-        style="
+        ">Abhilash & Ayana</Text>
+    <div style="
           margin-top: 18px;
           display: flex;
           align-items: center;
           justify-content: center;
-        "
-      >
-        <p>&#128151;</p>
-        <p
-          style="
+        ">
+      <p>&#128151;</p>
+      <p style="
             color: black;
             font-family: 'Montaga', serif;
             font-style: normal;
             font-weight: 500;
             font-size: 20px;
             line-height: 100%;
-          "
-          id="demo"
-        ></p>
-        <Text
-          style="font-family: 'Montaga', serif; color: black; margin-left: 10px"
-          >to Go</Text
-        >
-        <p>&#128151;</p>
-      </div>
-      <Text
-        style="
+          " id="demo"></p>
+      <Text style="font-family: 'Montaga', serif; color: black; margin-left: 10px">to Go</Text>
+      <p>&#128151;</p>
+    </div>
+    <Text style="
           font-family: 'Montaga';
           font-style: normal;
           font-weight: 400;
@@ -472,27 +536,22 @@ async function writeData() {
           text-align: center;
           padding-left: 10px;
           padding-right: 10px;
-        "
-        >On 30 December 2022, From 12:10 PM Onwards at Krishnakripa Kalyanamandapam
-        vadakara, Kerala</Text
-      >
+        ">On 30 December 2022, From 12:10 PM Onwards at Krishnakripa Kalyanamandapam
+      vadakara, Kerala</Text>
+  </div>
+  <div style="margin-top: 60px; position: relative; display: flex">
+    <div style="width: 100%; padding-left: 25px; padding-right: 25px">
+      <img style="width: 100%" src="./Group.svg" alt="" />
     </div>
-    <div style="margin-top: 60px; position: relative; display: flex">
-      <div style="width: 100%; padding-left: 25px; padding-right: 25px">
-        <img style="width: 100%" src="./Group.svg" alt="" />
-      </div>
-      <div
-        style="
+    <div style="
           position: absolute;
           top: 22%;
           display: flex;
           flex-direction: column;
           align-items: center;
           width: 100%;
-        "
-      >
-        <Text
-          style="
+        ">
+      <Text style="
             color: #ffc0cb;
             font-family: 'Noto Serif JP';
             font-style: normal;
@@ -503,11 +562,8 @@ async function writeData() {
             width: 52%;
             text-align: center;
             text-transform: uppercase;
-          "
-          >Mark Your Calendar</Text
-        >
-        <Text
-          style="
+          ">Mark Your Calendar</Text>
+      <Text style="
             color: #ffc0cb;
             font-family: 'Noto Serif JP';
             font-style: normal;
@@ -517,23 +573,18 @@ async function writeData() {
             margin-top: 7px;
 
             text-align: center;
-          "
-          >30/12/2022</Text
-        >
-      </div>
+          ">30/12/2022</Text>
     </div>
-    <div
-      style="
+  </div>
+  <div style="
         align-items: center;
         width: 100%;
         display: flex;
         justify-content: center;
         padding: 0px 70px;
-      "
-    >
-      <a href="./letter.jpeg" download>
-        <button
-          style="
+      ">
+    <a href="./letter.jpeg" download>
+      <button style="
             width: 100%;
             border: 2px solid#ffc0cb;
             color: #ffc0cb;
@@ -554,15 +605,13 @@ async function writeData() {
             line-height: 100%;
 
             text-transform: capitalize;
-          "
-        >
-          Download invitation card
-        </button>
-      </a>
-    </div>
-    <div style="width: 100%; padding: 70px 19px 57px 19px">
-      <div
-        style="
+          ">
+        Download invitation card
+      </button>
+    </a>
+  </div>
+  <div style="width: 100%; padding: 70px 19px 57px 19px">
+    <div style="
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -571,10 +620,8 @@ async function writeData() {
           background-color: #ffc0cb44;
           width: 100%;
           border-radius: 10px;
-        "
-      >
-        <Text
-          style="
+        ">
+      <Text style="
             font-family: 'Noto Serif JP';
             font-style: normal;
             font-weight: 600;
@@ -583,14 +630,10 @@ async function writeData() {
             text-align: center;
             text-transform: uppercase;
             color: #da5069;
-          "
-          >How do i get there</Text
-        >
-        <a
-          href="https://www.google.com/maps/dir//krishna+kripa+auditorium/@11.6193067,75.5610702,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3ba6846a8804392b:0x5008eeb62bc302b4!2m2!1d75.5936971!2d11.590741"
-        >
-          <button
-            style="
+          ">How do i get there</Text>
+      <a
+        href="https://www.google.com/maps/dir//krishna+kripa+auditorium/@11.6193067,75.5610702,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3ba6846a8804392b:0x5008eeb62bc302b4!2m2!1d75.5936971!2d11.590741">
+        <button style="
               background-color: #da5069;
               border: none;
               color: white;
@@ -599,26 +642,20 @@ async function writeData() {
               border-radius: 6px;
               margin-top: 18px;
               cursor: pointer;
-            "
-          >
-            <i
-              class="fa fa-map-marker"
-              style="color: white; margin-right: 9px; font-size: 19px"
-              aria-hidden="true"
-            ></i
-            >See the venue
-          </button>
-        </a>
-      </div>
+            ">
+          <i class="fa fa-map-marker" style="color: white; margin-right: 9px; font-size: 19px"
+            aria-hidden="true"></i>See the venue
+        </button>
+      </a>
     </div>
-    <div style="width: 100%;text-align: center;padding-bottom: 50px;font-family: cursive;color: pink;">
-      <Text style="text-align: center;">Created by Arjun C Ramesh</Text>
-    </div>
- 
-    <div style="padding-left: 25px">
-      
-      <Text
-        style="
+  </div>
+  <div style="width: 100%;text-align: center;padding-bottom: 50px;font-family: cursive;color: pink;">
+    <Text style="text-align: center;">Created by Arjun C Ramesh</Text>
+  </div>
+
+  <div style="padding-left: 25px">
+
+    <Text style="
           font-family: 'Montaga';
           font-style: normal;
           font-weight: 400;
@@ -629,49 +666,37 @@ async function writeData() {
           text-transform: uppercase;
 
           color: #2d2d2d;
-        "
-        >Comments</Text
-      >
+        ">Comments</Text>
 
-      <div style="padding-right: 25px; margin-top: 16px">
-        <form action="">
-          <input style=" color: #201a1aa6;
+    <div style="padding-right: 25px; margin-top: 16px">
+      <form action="">
+        <input style=" color: #201a1aa6;
           padding: 12px 20px;
           border: 1px solid #ccc;" type="text" id="fname" name="firstname" placeholder="Name" />
-          <textarea
-            style="
+        <textarea style="
               width: 100%;
               color: #201a1aa6;
               padding: 12px 20px;
               border: 1px solid #ccc;
-            "
-            id="Comments"
-            name="w3review"
-            rows="4"
-            cols="50"
-            placeholder="Lets grace the moment with your warm wishes below"
-          >
-</textarea
-          >
-          <button type="button" class="buttonsubmit" onclick="writeData()">
-            submit
-          </button>
-          <!-- <input style="margin-top: 12px" type="submit" value="Submit" /> -->
-        </form>
-      </div>
+            " id="Comments" name="w3review" rows="4" cols="50"
+          placeholder="Lets grace the moment with your warm wishes below">
+</textarea>
+        <button type="button" class="buttonsubmit" onclick="writeData()">
+          submit
+        </button>
+        <!-- <input style="margin-top: 12px" type="submit" value="Submit" /> -->
+      </form>
     </div>
+  </div>
 
-    <div
-      id="olakkaaa"
-      style="
+  <div id="olakkaaa" style="
         padding-right: 25px;
         align-items: center;
         width: 100%;
         padding-left: 25px;
         padding-top: 35px;
-      "
-    ></div>
-    <!-- <iframe id="audio"src="./song.mp3" allow="autoplay" style="display:none" id="iframeAudio">
+      "></div>
+  <!-- <iframe id="audio"src="./song.mp3" allow="autoplay" style="display:none" id="iframeAudio">
     </iframe> 
     <audio id="audio" autoplay loop  id="playAudio">
       <source src="./song.mp3">
@@ -681,26 +706,27 @@ async function writeData() {
     <source src="./song.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
-    <!-- <iframe src="" frameborder="0">
+  <!-- <iframe src="" frameborder="0">
       <audio controls autoplay>
         <source src="./song.mp3" type="audio/ogg">
         <source src="./song.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
       </audio>
     </iframe> -->
-    <script>
-      var x = document.getElementById("myAudio"); 
-      
-      function playAudio() { 
-        x.play(); 
+  <script>
+    var x = document.getElementById("myAudio");
 
-      } 
- 
-      document.body.addEventListener('click', playAudio, true)
-  
-      // function pauseAudio() { 
-      //   x.pause(); 
-      // } 
-      </script>
-  </body>
+    function playAudio() {
+      x.play();
+
+    }
+
+    document.body.addEventListener('click', playAudio, true)
+
+    // function pauseAudio() { 
+    //   x.pause();
+    // } 
+  </script>
+</body>
+
 </html>
