@@ -128,18 +128,27 @@ google_ad_client = "ca-pub-2783044520727903";
 
       chakka.forEach(myFunction);
       function myFunction(item, index) {
+        var backgroundColor = index % 2 === 0 ? "#ffc0cb" : "#4F7942";
+        var color = index % 2 !== 0 ? "#ffc0cb" : "#4F7942";
         console.log(item, index);
 
         name += item.name + "<br>";
         commentss +=
-          "<div>" +
+          `<div style=" background-color:${backgroundColor};
+        
+    border-top-left-radius: 20px;
+    padding: 10;
+    border-top-right-radius: 20px;
+          
+          ">` +
           `<text
       style="
+      color:${color};
         font-family: 'Noto Serif JP';
         font-style: normal;
         font-weight: 500;
         font-size: 13px;
-        color: #5e5d5d;
+  
         line-height: 160%;
       "
       >` +
@@ -148,6 +157,7 @@ google_ad_client = "ca-pub-2783044520727903";
     >` +
           `<text
       style="
+      color:${color};
         margin-left: 9px;
         font-family: 'Noto Serif JP';
         font-style: normal;
@@ -156,7 +166,7 @@ google_ad_client = "ca-pub-2783044520727903";
         line-height: 160%;
         margin-top: 4px;
 
-        color: #aaa7a5;
+
       "
       >` +
           item.time +
@@ -166,6 +176,11 @@ google_ad_client = "ca-pub-2783044520727903";
   </div>` +
           `<p
     style="
+    background-color:${backgroundColor};
+    margin-bottom: 15;
+    border-bottom-left-radius: 20px;
+    padding: 10;
+    border-bottom-right-radius: 20px;
       word-wrap: break-word;
       padding-right: 25px;
       width: 100%;
@@ -174,7 +189,7 @@ google_ad_client = "ca-pub-2783044520727903";
       font-weight: 600;
       font-size: 16px;
       line-height: 160%;
-      color: #4b4542;
+      color:${color};
     "
   >` +
           item.Comment +
@@ -533,7 +548,7 @@ google_ad_client = "ca-pub-2783044520727903";
       <p>&#128151;</p>
     </div>
     <Text style="
-          font-family: 'Great Vibes', cursive;
+          font-family: Trattatello, fantasy;
           font-style: normal;
           font-weight: 400;
           font-size: 14px; 
@@ -706,6 +721,7 @@ google_ad_client = "ca-pub-2783044520727903";
   </div>
 
   <div id="olakkaaa" style="
+  border-radius: 10px;
         padding-right: 25px;
         align-items: center;
         width: 100%;
